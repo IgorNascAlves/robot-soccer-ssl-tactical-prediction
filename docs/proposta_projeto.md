@@ -1,13 +1,18 @@
 # Proposta de Projeto (Entrega 1)
 
+**Aluno:** Igor do Nascimento Alves (Matricula: 24202610466)  
+**Disciplina:** CCM-109 - TÓPICOS ESPECIAIS EM INTELIGÊNCIA ARTIFICIAL (2026.2) - UFABC
+
 **Título:** Predição Tática e Coordenação Multiagente: Uma Abordagem Sequencial Profunda no Ambiente Robot Soccer SSL
+
+**Repositório:** [https://github.com/IgorNascAlves/robot-soccer-ssl-tactical-prediction.git](https://github.com/IgorNascAlves/robot-soccer-ssl-tactical-prediction.git)
 
 ## 1. Descrição do Problema e Motivação
 A orquestração de múltiplos agentes em ambientes dinâmicos (como robôs autônomos ou sistemas de enxame) baseia-se tradicionalmente em máquinas de estado. A transição para um controle descentralizado e emergente exige que os sistemas compreendam o estado global a partir de interações temporais. O problema central deste projeto é treinar um modelo de Deep Learning para modelar a dependência temporal da movimentação de um time de robôs e inferir sua tática global, utilizando o ambiente da Robot Soccer Small Size League (SSL). Esta prova de conceito é o passo fundamental para a futura aplicação de arquiteturas análogas às de Large Language Models (LLMs) na orquestração de enxames e biologia sintética.
 
 ## 2. Base de Dados e Pré-processamento
 O conjunto de dados será construído a partir de logs oficiais de telemetria da Robot Soccer SSL, extraídos de repositórios públicos na nuvem.
-Os arquivos de replay, originalmente em binário (ProtoBuf), serão pré-processados e convertidos para tensores. Para capturar a evolução da jogada, os dados espaciais (coordenadas $x, y$ e orientação $\theta$ dos aliados, adversários e bola) serão estruturados em janelas deslizantes (sliding windows) de tamanho $T$. Dessa forma, a rede receberá como entrada uma série temporal multivariada, onde cada amostra representa a cinemática do enxame nos últimos segundos da partida.
+Os arquivos de replay, originalmente em binário (ProtoBuf), serão pré-processados e convertidos para tensores. Para capturar a evolução da jogada, os dados espaciais (coordenadas *x, y* e orientação *θ* dos aliados, adversários e bola) serão estruturados em janelas deslizantes (sliding windows) de tamanho *T*. Dessa forma, a rede receberá como entrada uma série temporal multivariada, onde cada amostra representa a cinemática do enxame nos últimos segundos da partida.
 
 ## 3. Abordagem Metodológica e Arquitetura
 Para lidar com a natureza sequencial dos dados de telemetria, o projeto será desenvolvido em PyTorch, com foco nas arquiteturas avançadas abordadas na disciplina.
@@ -16,3 +21,6 @@ O treinamento envolverá a otimização da função de custo (como Cross-Entropy
 
 ## 4. Otimização, Regularização e Avaliação
 Para garantir a capacidade de generalização do modelo e evitar o sobreajuste (overfitting) aos times específicos do dataset, serão aplicadas técnicas de regularização como Dropout e Early Stopping durante a fase de treinamento. O desempenho da arquitetura LSTM/Transformer será avaliado contra um conjunto de validação isolado, utilizando métricas como Loss, Acurácia e F1-Score, demonstrando o ganho prático das arquiteturas profundas na resolução de problemas complexos de coordenação.
+
+## 5. Trabalhos Futuros e Integração
+Como desdobramento natural desta prova de conceito, almeja-se a aplicação do modelo preditivo como o núcleo de tomada de decisão tática, substituindo lógicas codificadas manualmente tanto em ambiente de simulação quanto na transferência direta para robôs físicos (Sim-to-Real). Adicionalmente, espera-se em etapas futuras explorar Redes Adversárias Geradoras (GANs) para a geração de cenários sintéticos táticos, visando o enriquecimento do treinamento multiagente e a imitação de comportamentos complexos (GAIL).
