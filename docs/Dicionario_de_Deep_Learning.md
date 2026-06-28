@@ -9,6 +9,9 @@
 * **Transformers & Attention:** A mesma tecnologia por trás do ChatGPT, mas aplicada ao campo. O mecanismo de *Attention* ensina a IA a ignorar robôs que não participam da jogada e a focar (dar "atenção matemática") apenas nos defensores próximos à bola.  
 * **Adam (Otimizador):** O algoritmo responsável por ajustar a rede quando ela comete um erro. Se o robô for para a posição errada na simulação, o Adam recalcula os pesos matemáticos do cérebro para garantir que o erro não se repita.  
 * **Cross-Entropy (Loss Function):** A régua que mede quão errada foi a decisão da IA. O objetivo do treino é sempre fazer a *Loss* chegar o mais próximo possível de zero.
+* **BPTT (Backpropagation Through Time):** A forma como a rede neural corrige seus próprios erros ao longo do tempo. Se a IA previu um passe errado, o BPTT viaja "de volta ao passado" pelas memórias da LSTM para corrigir as engrenagens matemáticas que causaram esse erro.
+* **LLM (Large Language Model):** Modelos de inteligência artificial focados em linguagem (como o ChatGPT). Embora a gente processe telemetria de robôs e não texto, a mesma arquitetura por trás dos LLMs (Transformers) pode ser adaptada para "ler" a evolução da tática do jogo.
+* **Janelas Deslizantes (Sliding Windows):** Técnica para fatiar o jogo em "clipes". Como a IA não consegue analisar a partida inteira de uma vez, nós recortamos janelas de alguns poucos segundos. A janela "desliza" no tempo, gerando várias amostras sequenciais curtas para o modelo estudar.
 
 ## **2\. Avaliação e Qualidade do Treino (Como a IA "Estuda")**
 
